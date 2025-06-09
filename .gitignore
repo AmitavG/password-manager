@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+#Config Properties
+config.properties
+
 # Log file
 *.log
 

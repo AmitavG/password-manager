@@ -123,4 +123,20 @@ public class PasswordManager {
         catch(Exception e)
             System.out.println("Error searchign credentials: " +e.getMessage);
     }
+    
+    public void close() {
+        try {
+            if(conn != null)
+                conn.close();
+            if(scanner != null)
+                scanner.close();
+        }
+        catch(SQLException e)  
+            System.out.println("Error closing resources: " +e.getMessage);
+    }
+
+    public static void main(String[] args) {
+        PasswordManager pm = new PasswordManager();
+        pm.run();
+    }
 }

@@ -89,9 +89,10 @@ public class PasswordManager {
             while(rs.next()) {
                 String website = rs.getString("website");
                 String username = rs.getString("username");
-                String password = rs.getString("password");
+                String encryptedPassword = rs.getString("password");
+                // String decryptedPassword = EncryptionUtil.decrypt(encryptedPassword);
 
-                System.out.printf("Website: %s | Username: %s | Password: %s", website, username, password);
+                System.out.printf("Website: %s | Username: %s | Password: %s", website, username, encryptedPassword);
             }
         }
         catch(Exception e) {

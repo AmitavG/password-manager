@@ -16,7 +16,7 @@ public class EncryptionUtil {
         try (FileInputStream fis = new FileInputStream("config.properties")) {
             props.load(fis);
             String key = props.getProperty("aes.key");
-            if(key==null || key.length!=16)
+            if(key==null || key.length()!=16)
                 throw new RuntimeErrorException(null, "AES key must be 16 characters long in config.properties");
             return key.getBytes();
         }

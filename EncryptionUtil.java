@@ -27,7 +27,7 @@ public class EncryptionUtil {
 
     public static String encrypt(String data) throws Exception {
         SecretKeySpec key = new SecretKeySpec(keyValue, ALGORITHM);
-        Cipher cipher = Cipher.getInstance(data);
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, key);
         byte[] encryptedVal = cipher.doFinal(data.getBytes());
         return Base64.getEncoder().encodeToString(encryptedVal);
@@ -35,7 +35,7 @@ public class EncryptionUtil {
 
     public static String decrypt(String encryptedData) throws Exception {
         SecretKeySpec key = new SecretKeySpec(keyValue, ALGORITHM);
-        Cipher cipher = Cipher.getInstance(encryptedData);
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.DECRYPT_MODE, key);
         byte[] decodedVal = Base64.getDecoder().decode(encryptedData);
         byte[] decryptedVal = cipher.doFinal(decodedVal);

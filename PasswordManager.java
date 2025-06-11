@@ -75,7 +75,7 @@ public class PasswordManager {
             System.out.println("Credential added successfully ");
         }
         catch (Exception e) {
-            System.out.println("Error adding credential" +e.getMessage());
+            System.out.println("Error adding credential: " +e.getMessage());
         }
     }
 

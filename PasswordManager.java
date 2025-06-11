@@ -6,9 +6,11 @@ public class PasswordManager {
     private static final String USER = "root";
     private static final String PASS = "amitav";
 
+    private Connection conn;
+
     public PasswordManager() {
         try{
-            Connection conn = DriverManager.getConnection(URL, USER, PASS);
+            conn = DriverManager.getConnection(URL, USER, PASS);
             Scanner sc = new Scanner(System.in);
         }
         catch (SQLException e){
@@ -72,5 +74,25 @@ public class PasswordManager {
         }
         catch (Exception e)
             System.out.println("Error adding credential" +e.getMessage);
+    }
+
+    private void viewCredentials() {
+        try {
+            String sql = "select * from credentials";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            System.out.println("\n Stored Credentials: ");
+            while(rs.next()) {
+                String website = rs.getString("website");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+
+                System.out.printf("Website: %s | Username: %s | Password: %s", website, username, password);
+            }
+        }
+        catch(Exception e) {
+            System.out.println("Error retrieving credentials: " +e.getMessage());
+        }
     }
 }

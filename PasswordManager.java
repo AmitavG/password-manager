@@ -11,10 +11,11 @@ public class PasswordManager {
 
     public PasswordManager() {
         try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(URL, USER, PASS);
             sc = new Scanner(System.in);
         }
-        catch (SQLException e){
+        catch (SQLException | ClassNotFoundException e){
             System.out.println("DB Connection failed: " +e.getMessage());
             System.exit(1);
         }

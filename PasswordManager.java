@@ -7,11 +7,12 @@ public class PasswordManager {
     private static final String PASS = "amitav";
 
     private Connection conn;
+    private Scanner sc;
 
     public PasswordManager() {
         try{
             conn = DriverManager.getConnection(URL, USER, PASS);
-            Scanner sc = new Scanner(System.in);
+            sc = new Scanner(System.in);
         }
         catch (SQLException e){
             System.out.println("DB Connection failed: " +e.getMessage());
@@ -64,16 +65,17 @@ public class PasswordManager {
             String encryptedPassword = EncryptionUtil.encrypt(password);
 
             String sql = "insert into credentials (website, username, password) values (?,?,?)";
-            PreparedStatement stmt = conn.PreparedStatement(sql);
+            PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, website);
             stmt.setString(2, username);
-            stmt.setString(3, password);
+            stmt.setString(3, encryptedPassword);
             stmt.executeUpdate();
 
             System.out.println("Credential added successfully ");
         }
-        catch (Exception e)
-            System.out.println("Error adding credential" +e.getMessage);
+        catch (Exception e) {
+            System.out.println("Error adding credential" +e.getMessage());
+        }
     }
 
     private void viewCredentials() {
@@ -120,19 +122,21 @@ public class PasswordManager {
             if(!found)
                 System.out.println("No credentials found for that website");
         }
-        catch(Exception e)
-            System.out.println("Error searchign credentials: " +e.getMessage);
+        catch(Exception e) {
+            System.out.println("Error searchign credentials: " +e.getMessage());
+        }
     }
     
     public void close() {
         try {
             if(conn != null)
                 conn.close();
-            if(scanner != null)
-                scanner.close();
+            if(sc != null)
+                sc.close();
         }
-        catch(SQLException e)  
-            System.out.println("Error closing resources: " +e.getMessage);
+        catch(SQLException e){
+            System.out.println("Error closing resources: " +e.getMessage());
+        }
     }
 
     public static void main(String[] args) {

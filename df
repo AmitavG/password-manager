@@ -1,0 +1,29 @@
+[33mcommit 56dd13d2e3381dd87c229d4993083213f4e822ce[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: AmitavG <amitavgodishala@gmail.com>
+Date:   Wed Jun 11 10:34:18 2025 +0530
+
+    Add decrypt to EncryptionUtil
+
+[33mcommit 4ab89a322c1d871760f8ba75bab35b7804e8f2f8[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: AmitavG <amitavgodishala@gmail.com>
+Date:   Wed Jun 11 10:25:39 2025 +0530
+
+    Add encrypt method to EncryptionUtil
+
+[33mcommit b6d7f7ca78f6e5050f894684c7458cec32f95963[m
+Author: AmitavG <amitavgodishala@gmail.com>
+Date:   Tue Jun 10 01:12:05 2025 +0530
+
+    Add config to .gitignore
+
+[33mcommit ce931c352cd2cb44a5284528bfa09053eb3a1b65[m
+Author: AmitavG <amitavgodishala@gmail.com>
+Date:   Tue Jun 10 01:09:43 2025 +0530
+
+    Add Encryption
+
+[33mcommit a685401f1666e80a25925c67d99a29da86e4cee2[m
+Author: AmitavG <amitavgodishala@gmail.com>
+Date:   Mon Jun 9 23:33:27 2025 +0530
+
+    Initial commit

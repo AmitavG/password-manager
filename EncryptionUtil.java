@@ -24,4 +24,12 @@ public class EncryptionUtil {
             throw new RuntimeException("Failed to load AES key from config.properteis");
         }
     }
+
+    public static String encrypt(String data) throws Exception {
+        SecretKeySpec key = new SecretKeySpec(keyValue, ALGORITHM);
+        Cipher cipher = Cipher.getInstance(data);
+        cipher.init(Cipher.ENCRYPT_MODE, key);
+        byte[] encryptedVal = cipher.doFinal(data.getBytes());
+        return Base64.getEncoder().encodeToString(encryptedVal);
+    }
 }

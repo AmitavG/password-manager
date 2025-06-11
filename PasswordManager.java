@@ -95,4 +95,32 @@ public class PasswordManager {
             System.out.println("Error retrieving credentials: " +e.getMessage());
         }
     }
+
+    private void searchByWebsite() {
+        try {
+            System.out.println("Enter website to search: ");
+            String webQuery = sc.nextLine();
+
+            String sql = "select * from credentials where website like ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "%" + webQuery + "%");
+            ResultSet rs = stmt.executeQuery();
+
+            boolean found = false;
+            while(rs.next()) {
+                found = true;
+                String website = rs.getString(1);
+                String username = rs.getString(2);
+                String password = rs.getString(3);
+
+                System.out.printf("Website: %s | Username: %s | Password: %s", website, username, password);
+
+            }
+
+            if(!found)
+                System.out.println("No credentials found for that website");
+        }
+        catch(Exception e)
+            System.out.println("Error searchign credentials: " +e.getMessage);
+    }
 }
